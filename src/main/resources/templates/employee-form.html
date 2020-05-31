@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Management System | Add Employee</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container my-2">
+		<div th:if="${action=='add'}">
+			<h1 align="center">Add Employee</h1>
+		</div>	
+		<div th:if="${action=='update'}">
+			<h1 align="center">Update Employee</h1>
+		</div>	
+		<hr>
+		<a th:href="@{/}"> < Back to Employee List</a>
+		<hr>
+		<form th:action="@{/save-employee}" th:object="${employee}" method="post">
+			<input type="hidden" th:field="*{id}">
+			<div class="form-group">
+				<label class="form-label">Enter First Name:</label> <input
+					type="text" class="form-control" th:field="*{firstName}">
+			</div>
+			<div class="form-group">
+				<label class="form-label">Enter Last Name:</label> <input
+					type="text" class="form-control" th:field="*{lastName}">
+			</div>
+			<div class="form-group">
+				<label class="form-label">Enter Email:</label> <input type="text"
+					class="form-control" th:field="*{email}">
+			</div>
+			<div class="form-group"> 
+				<label class="form-label">Select Department:</label>
+				<select class="form-control" th:field="*{department}">
+					<option th:value="Marketing">Marketing</option>
+					<option th:value="Finance">Finance</option>
+					<option th:value="Operations">Operations</option>
+					<option th:value="Human_Resource">Human Resource</option>
+					<option th:value="IT">IT</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="date" class="form-label">Enter Date Hired:</label> 
+				<input type="date" class="form-control" th:field="*{date}" name="date" id="date">
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-info" name="button">Save Employee</button>
+			</div>
+		</form>
+
+
+
+
+	</div>
+</body>
+</html>
